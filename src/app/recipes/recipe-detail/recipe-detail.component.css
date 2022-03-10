@@ -1,0 +1,9 @@
+.recipeDropdownItem {
+  cursor: pointer;
+  padding: 3px 20px;
+}
+
+.recipeDropdownItem:hover,
+.recipeDropdownItem:focus {
+  background-color: rgb(173, 216, 230);
+}
