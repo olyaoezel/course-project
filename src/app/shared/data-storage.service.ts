@@ -4,13 +4,14 @@ import {  map, tap } from "rxjs/operators";
 import { AuthService } from "../auth/auth.service";
 import { Recipe } from "../recipes/recipe.model";
 import { RecipeService } from "./recipe.service";
+import { environment } from "src/environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class DataStorageService{
     constructor(private http: HttpClient,
                 private recipeService: RecipeService,
                 private authService: AuthService) { }
-    host = 'https://angular-recipe-book-125c6-default-rtdb.europe-west1.firebasedatabase.app/recipes.json';
+    host = environment.host + 'recipes.json';
     
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
