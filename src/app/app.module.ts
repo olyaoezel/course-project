@@ -12,6 +12,10 @@ import { CoreModule } from './core.module';
 import { LoggingService } from './logging.service';
 import * as fromAppReducer from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
+import { StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RecipeEffects } from './recipes/store/recipe.effects';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { AuthEffects } from './auth/store/auth.effects';
     StoreModule.forRoot(fromAppReducer.appReducer), 
     SharedModule,
     CoreModule,
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   
   bootstrap: [AppComponent],
